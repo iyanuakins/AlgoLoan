@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using AlgoLoan.Models;
 using Autofac;
 using Autofac.Integration.Mvc;
 using AutoMapper;
@@ -26,13 +27,18 @@ namespace AlgoLoan
         {
             var config = new MapperConfiguration(cfg =>
             {
-                //cfg.AddProfile(new MappingProfile());
+                cfg.AddProfile(new MappingProfile());
             });
 
-            builder.RegisterType<AlgoLoanDbContext>().SingleInstance();
-//            builder.RegisterType<IssueRepository>().As<IIssueRepository>()
-//                .WithParameter(new TypedParameter(typeof(AlgoDeskContext), new AlgoDeskContext()))
-//                .SingleInstance();
+            builder.RegisterInstance(config.CreateMapper())
+                .As<IMapper>()
+                .SingleInstance();
+
+            builder.RegisterType<AlgoLoanDbContext>().InstancePerRequest();
+
+            builder.RegisterType<ProviderRepository>().As<IProviderRepository>()
+                .WithParameter(new TypedParameter(typeof(AlgoLoanDbContext), new AlgoLoanDbContext()))
+                .SingleInstance();
 
         }
     }
