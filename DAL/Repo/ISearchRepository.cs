@@ -11,7 +11,6 @@ namespace DAL.Repo
     {
         void Add(Search obj);
         List<Search> GetAll();
-
         bool Save();
     }
 }
