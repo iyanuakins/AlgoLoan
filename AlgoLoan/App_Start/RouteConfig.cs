@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AlgoLoan;
 
 namespace AlgoLoan
 {
@@ -11,6 +12,7 @@ namespace AlgoLoan
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            AutofacConfig.Register();
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
