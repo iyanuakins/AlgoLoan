@@ -6,7 +6,7 @@ namespace DAL.Repo
     public interface IProviderRepository
     {
         List<Provider> GetProviders(int amount, int duration, string type);
-        Provider GetProviderByLink(string link);
+        Provider GetById(int id);
         User GetUserById(string id);
         bool Save();
     }

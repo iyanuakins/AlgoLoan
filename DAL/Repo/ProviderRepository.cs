@@ -22,7 +22,8 @@ namespace DAL.Repo
                         p.maxAmount >= amount &&
                         p.minDuration <= duration &&
                         p.maxDuration >= duration)
-                    .Select(p => p).ToList();
+                    .ToList();
+
                 if (result.Count < 1)
                 {
                     return null;
@@ -36,12 +37,11 @@ namespace DAL.Repo
 
         }
 
-        public Provider GetProviderByLink(string link)
+        public Provider GetById(int id)
         {
             try
             {
-                var query = _context.Providers.Where(p => p.link == link)
-                    .Select(p => p).FirstOrDefault();
+                var query = _context.Providers.Find(id);
                 return query;
             }
             catch
