@@ -9,6 +9,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using AutoMapper;
 using DAL.EF;
+using DAL.Repo;
 
 namespace AlgoLoan
 {

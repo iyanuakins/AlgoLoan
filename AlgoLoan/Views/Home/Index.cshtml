@@ -1,31 +1,67 @@
-﻿@{
+﻿@model AlgoLoan.Models.ViewModels.FormViewModel
+
+@{
+
     ViewBag.Title = "Home Page";
+
+    var durationOptions = new List<SelectListItem>
+    {
+        new SelectListItem {Text = "1 month", Value = "1"},
+        new SelectListItem {Text = "2 months", Value = "2"},
+        new SelectListItem {Text = "3 months", Value = "3"},
+        new SelectListItem {Text = "4 months", Value = "4"},
+        new SelectListItem {Text = "5 months", Value = "5"},
+        new SelectListItem {Text = "6 months", Value = "6"},
+        new SelectListItem {Text = "7 months", Value = "7"},
+        new SelectListItem {Text = "8 months", Value = "8"},
+        new SelectListItem {Text = "9 months", Value = "9"},
+        new SelectListItem {Text = "10 months", Value = "10"},
+        new SelectListItem {Text = "11 months", Value = "11"},
+        new SelectListItem {Text = "12 months", Value = "12"}
+    };
+
+    var typeOptions = new List<SelectListItem>
+    {
+        new SelectListItem {Text = "Student loan", Value = "studentloan"},
+        new SelectListItem {Text = "Individual loan", Value = "individualloan"},
+        new SelectListItem {Text = "Business loan", Value = "businessloan"}
+    };
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- banner-text -->
+<section class="testimonials bottom-banner-w3layouts">
+    <div class="container">
+        <div class="wrapper-slider text-left">
+            <!-- Slideshow 1 -->
+            <div class="rslides_container">
+                <ul class="rslides" id="slider1">
+                    <li>
+                        <div class="banner-info">
+                            <h3>Need a Loan?</h3>
+                            <p>We can get you the absolute best from pool of loan providers. Fill the form Start the process.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ban-form text-left">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new {@class= "mt-4"}))
+            {
+                @Html.AntiForgeryToken();
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                @Html.TextBoxFor(Model => Model.Amount, new { @class = "form-control", placeholder="Amount in Naira" })
+
+                @Html.ValidationMessageFor(Model => Model.Amount, "", new { @class = "text-danger" })
+
+                @Html.DropDownListFor(Model => Model.Type, typeOptions, new { @class = "form-control" })
+
+                @Html.LabelFor(Model => Model.Duration, new { @class = "sr-only" })
+
+                @Html.DropDownListFor(Model => Model.Duration, durationOptions, new { @class = "form-control" })
+
+                <button type="submit" class="form-control text-uppercase">Start Process</button>
+            }
+        </div>
+        <div class="clearfix"></div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section>
