@@ -1,42 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using DAL.EF;
 
 namespace DAL.Repo
 {
-    public class SearchRepository : ISearchRepository
+    public class VisitRepository : IVisitRepository
     {
         private readonly AlgoLoanDbContext _context;
 
-        public SearchRepository(AlgoLoanDbContext context)
+        public VisitRepository(AlgoLoanDbContext context)
         {
             _context = context;
         }
 
-        public void Add(Search obj)
+
+        public void Add(Visit obj)
         {
             try
             {
-                _context.Searches.Add(obj);
+                _context.Visits.Add(obj);
             }
             catch (Exception e)
             {
-                
+
             }
         }
 
-        public List<Search> GetAll()
+        public List<Visit> GetAll()
         {
             try
             {
-                var result = _context.Searches;
-                return result.ToList();
+                return _context.Visits.ToList();
             }
             catch (Exception e)
             {
                 return null;
+            }
+        }
+
+        public bool IsUniqueVisit(string userId, int providerId)
+        {
+            try
+            {
+                bool isNotUnique = _context.Visits
+                    .Any(v => v.userId.Equals(userId) &&
+                              v.providerId == providerId);
+                return !isNotUnique;
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
 
@@ -53,7 +67,5 @@ namespace DAL.Repo
             }
 
         }
-
-        
     }
 }
