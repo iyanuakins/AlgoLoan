@@ -67,7 +67,7 @@ namespace DAL.Repo
             }
         }
 
-        public Subscription GetById(string id)
+        public Subscription GetByUserId(string id)
         {
             try
             {

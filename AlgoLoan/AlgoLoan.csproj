@@ -219,6 +219,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,7 @@
     <Compile Include="Models\ViewModels\FormViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\ProviderViewModel.cs" />
+    <Compile Include="Models\ViewModels\RepaymentViewModel.cs" />
     <Compile Include="Models\ViewModels\SearchViewModel.cs" />
     <Compile Include="Models\ViewModels\SubscriptionViewModel.cs" />
     <Compile Include="Models\ViewModels\VisitViewModel.cs" />
@@ -431,6 +433,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Provider\" />
+    <Folder Include="Views\Subscription\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

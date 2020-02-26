@@ -8,7 +8,7 @@ namespace DAL.Repo
         void Add(Subscription obj);
         List<Subscription> GetAll();
         bool[] CheckUserSubscription(string id);
-        Subscription GetById(string id);
+        Subscription GetByUserId(string id);
         void Update(Subscription obj);
         bool Save();
     }
