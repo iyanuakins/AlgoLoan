@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace AlgoLoan.Models.ViewModels
+namespace AlgoLoan.Models
 {
     public class SubscriptionViewModel
     {

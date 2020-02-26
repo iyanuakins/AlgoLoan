@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AlgoLoan.Models.ViewModels
+namespace AlgoLoan.Models
 {
     public class ProviderViewModel
     {

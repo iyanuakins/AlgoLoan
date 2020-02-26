@@ -39,7 +39,19 @@ namespace AlgoLoan
 
             builder.RegisterType<ProviderRepository>().As<IProviderRepository>()
                 .WithParameter(new TypedParameter(typeof(AlgoLoanDbContext), new AlgoLoanDbContext()))
-                .SingleInstance();
+                .InstancePerRequest();
+
+            builder.RegisterType<SearchRepository>().As<ISearchRepository>()
+                .WithParameter(new TypedParameter(typeof(AlgoLoanDbContext), new AlgoLoanDbContext()))
+                .InstancePerRequest();
+
+            builder.RegisterType<VisitRepository>().As<IVisitRepository>()
+                .WithParameter(new TypedParameter(typeof(AlgoLoanDbContext), new AlgoLoanDbContext()))
+                .InstancePerRequest();
+
+            builder.RegisterType<SubscriptionRepository>().As<ISubscriptionRepository>()
+                .WithParameter(new TypedParameter(typeof(AlgoLoanDbContext), new AlgoLoanDbContext()))
+                .InstancePerRequest();
 
         }
     }

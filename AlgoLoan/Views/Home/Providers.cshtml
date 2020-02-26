@@ -1,4 +1,5 @@
-﻿@model List<AlgoLoan.Models.ViewModels.ProviderViewModel>
+﻿@using System.Globalization
+@model Tuple<AlgoLoan.Models.SearchViewModel, List<AlgoLoan.Models.ProviderViewModel>>
 @{
     ViewBag.Title = "Providers";
 }
@@ -22,12 +23,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @for (int i = 0; i < Model.Count; i++)
+                    @for (int i = 0; i < Model.Item2.Count; i++)
                     {
                         <tr>
                             <th scope="row">@(i + 1)</th>
-                            <td>@Model[i].name</td>
-                            <td>NGN@(Model[i].Amount)</td>
+                            <td>@Model.Item2[i].name</td>
+                            <td>NGN@(Model.Item1.amount.ToString("C:2", CultureInfo.CreateSpecificCulture("NG-ng")))</td>
                             <td>
                                 <a class="btn btn-success" href="@Url.Action("Details", "Provider", new {id = @i})">See more details</a>
                             </td>

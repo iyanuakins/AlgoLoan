@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoLoan", "AlgoLoan\AlgoLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoLoan.Tests", "AlgoLoan.Tests\AlgoLoan.Tests.csproj", "{741A0A4E-7F21-442C-B744-69F65BD69869}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{3A1A4A0E-04FF-40DD-90C1-5AA2BCF6606C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{DFED3212-4191-4B3A-9773-0BB8459B2872}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{741A0A4E-7F21-442C-B744-69F65BD69869}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{741A0A4E-7F21-442C-B744-69F65BD69869}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{741A0A4E-7F21-442C-B744-69F65BD69869}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A1A4A0E-04FF-40DD-90C1-5AA2BCF6606C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A1A4A0E-04FF-40DD-90C1-5AA2BCF6606C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A1A4A0E-04FF-40DD-90C1-5AA2BCF6606C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A1A4A0E-04FF-40DD-90C1-5AA2BCF6606C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFED3212-4191-4B3A-9773-0BB8459B2872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFED3212-4191-4B3A-9773-0BB8459B2872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFED3212-4191-4B3A-9773-0BB8459B2872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFED3212-4191-4B3A-9773-0BB8459B2872}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
