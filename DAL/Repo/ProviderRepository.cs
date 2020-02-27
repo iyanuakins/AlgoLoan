@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DAL.EF;
 
@@ -13,6 +14,17 @@ namespace DAL.Repo
             _context = context;
         }
 
+        public void Add(Provider obj)
+        {
+            try
+            {
+                _context.Providers.Add(obj);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
         public List<Provider> GetProviders(int amount, int duration, string type)
         {
             try
@@ -35,6 +47,19 @@ namespace DAL.Repo
                 return null;
             }
 
+        }
+
+        public List<Provider> GetAllProviders()
+        {
+            try
+            {
+                var query = _context.Providers.ToList();
+                return query;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public Provider GetById(int id)
