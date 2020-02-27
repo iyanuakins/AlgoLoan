@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AlgoLoan.Models.ProviderViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New Provider", "AddProvider");
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Unique Visits
+        </th>
+        <th>
+            Total Visits
+        </th>
+        <th>
+            Last Visit Date
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.uniqueClicks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalClicks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastVisited)
+            </td>
+        </tr>
+    }
+
+</table>

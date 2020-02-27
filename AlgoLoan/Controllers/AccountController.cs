@@ -79,6 +79,12 @@ namespace AlgoLoan.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var userId = SignInManager.AuthenticationManager
+                        .AuthenticationResponseGrant.Identity.GetUserId();
+                    if (await UserManager.IsInRoleAsync(userId, "Admin"))
+                    {
+                        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -163,10 +169,7 @@ namespace AlgoLoan.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    if (User.IsInRole("Admin"))
-                    {
-                        return RedirectToAction("Index", "Dashboard", new {area = "Admin"});
-                    }
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);

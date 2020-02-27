@@ -45,6 +45,7 @@ namespace AlgoLoan.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult AddProvider(ProviderViewModel model)
         {
             if (ModelState.IsValid)
