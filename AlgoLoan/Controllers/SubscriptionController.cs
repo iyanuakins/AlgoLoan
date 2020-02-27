@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace AlgoLoan.Controllers
 {
+    [Authorize]
     public class SubscriptionController : Controller
     {
         private readonly IProviderRepository _providerRepository;
@@ -44,7 +45,7 @@ namespace AlgoLoan.Controllers
                     type == "mega" ? 360000 : 960000;
                 
                 var response = await paystackTransactionAPI.InitializeTransaction(email, amount,
-                    callbackUrl: "https://localhost:44389/Subscription/VerifyPayment");
+                    callbackUrl: "https://localhost:44363/Subscription/VerifyPayment");
                 
                 if (response.status)
                 {
@@ -59,9 +60,9 @@ namespace AlgoLoan.Controllers
             return View();
         }
 
-        public async Task<ActionResult> VerifyPayment(string reference)
+        public async Task<ActionResult> VerifyPayment(string reference = null)
         {
-            if (!String.IsNullOrWhiteSpace(reference))
+            if (reference != null)
             {
                 string secretKey = ConfigurationManager.AppSettings["PayStackSec"];
                 var paystackTransactionAPI = new PaystackTransaction(secretKey);
@@ -76,14 +77,14 @@ namespace AlgoLoan.Controllers
                         type == "mega" ? 120 : 365;
 
                     bool[] checks = _subscriptionRepository.CheckUserSubscription(userId);
-
                     if (checks[0])
                     {
                         var sub = _subscriptionRepository.GetByUserId(userId);
                         sub.startDate = DateTime.Now;
                         sub.endDate = DateTime.Now.AddDays(days);
                         sub.lastSubDate = DateTime.Now;
-                        sub.type = "subType";
+                        sub.type = type;
+                        _subscriptionRepository.Save();
                     }
                     else
                     {
@@ -92,12 +93,11 @@ namespace AlgoLoan.Controllers
                             startDate = DateTime.Now,
                             endDate = DateTime.Now.AddDays(days),
                             lastSubDate = DateTime.Now,
-                            type = "subType",
-                            User = loggedInUser,
+                            type = type,
                             userId = userId
                         });
+                        _subscriptionRepository.Save();
                     }
-                    _subscriptionRepository.Save();
 
                     int providerId = (int)Session["providerId"];
                     return RedirectToAction("Details", "Provider", new { id = providerId });

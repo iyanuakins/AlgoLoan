@@ -42,7 +42,7 @@ namespace AlgoLoan.Controllers
                     if (id < providerList.Count)
                     {
                         ProviderViewModel provider = providerList[id];
-                        var search = (Search) Session["search"];
+                        var search = (SearchViewModel) Session["search"];
                         int duration = search.duration;
                         decimal amount = search.amount;
                         decimal rate = (provider.maxRate + provider.maxRate / 2) + 100;
@@ -66,16 +66,16 @@ namespace AlgoLoan.Controllers
                             {
                                 AmountLeft = totalPayment - (monthlyPayment * i),
                                 MonthlyPayment = monthlyPayment,
-                                PercentagePaid = ((monthlyPayment * i) / totalPayment) * 100,
-                                Rate = rate
+                                PercentagePaid = decimal.Round((monthlyPayment * i) / totalPayment, 2),
+                                Rate = decimal.Round(rate - 100, 2)
                             });
                             i++;
                         } while (i <= duration);
 
                         ViewBag.Count = 1;
                         ViewBag.Search = search;
-                        ViewBag.Details = repaymentDetails;
-                        ViewBag.totalPayment = totalPayment;
+                        ViewBag.RepaymentDetails = repaymentDetails;
+                        ViewBag.TotalAmount = totalPayment;
                         return View(provider);
                     }
 

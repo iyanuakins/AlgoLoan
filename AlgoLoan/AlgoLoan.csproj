@@ -434,13 +434,15 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Providers.cshtml" />
     <Content Include="Views\Provider\Details.cshtml" />
+    <Content Include="Views\Subscription\Pay.cshtml" />
+    <Content Include="Views\Subscription\Failed.cshtml" />
+    <Content Include="Views\Subscription\VerifyPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Dashboard\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Views\Subscription\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -28,7 +28,7 @@
                         <tr>
                             <th scope="row">@(i + 1)</th>
                             <td>@Model.Item2[i].name</td>
-                            <td>NGN@(Model.Item1.amount.ToString("C:2", CultureInfo.CreateSpecificCulture("NG-ng")))</td>
+                            <td>@(Model.Item1.amount.ToString("C", CultureInfo.CreateSpecificCulture("NG-ng")))</td>
                             <td>
                                 <a class="btn btn-success" href="@Url.Action("Details", "Provider", new {id = @i})">See more details</a>
                             </td>

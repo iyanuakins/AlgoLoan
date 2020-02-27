@@ -25,7 +25,7 @@ namespace DAL.Repo
 
             }
         }
-        public List<Provider> GetProviders(int amount, int duration, string type)
+        public List<Provider> GetProviders(decimal amount, int duration, string type)
         {
             try
             {

@@ -1,5 +1,4 @@
 ﻿@using System.Globalization
-@using DAL.EF
 @model AlgoLoan.Models.ProviderViewModel
 @{
     ViewBag.Title = "Loan repayment Details";
@@ -14,10 +13,10 @@
                 <dd> @Model.name</dd>
                 <br />
                 <dt class="bold-black"><strong>Loan Duration:</strong></dt>
-                <dd>@ViewBag.Search.Duration Months</dd>
+                <dd>@ViewBag.Search.duration Months</dd>
                 <br />
-                <dt class="bold-black"><strong>Amount borrowed:</strong></dt>
-                <dd>NGN@(ViewBag.Search.Duration.ToString("C:2", CultureInfo.CreateSpecificCulture("ng-NG")))</dd>
+                <dt class="bold-black"><strong>Loan Amount:</strong></dt>
+                <dd>@(ViewBag.Search.amount.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG")))</dd>
             </dl>
 
             <br />
@@ -36,16 +35,16 @@
                     {
                         <tr>
                             <th scope="row">@(ViewBag.Count++)</th>
-                            <td>@detail.Rate.ToString("P:2")</td>
-                            <td>@detail.MonthlyPayment.ToString("C:2", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
-                            <td>@detail.AmountLeft.ToString("C:2", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
-                            <td>@detail.PercentagePaid.ToString("P:2")</td>
+                            <td>@(detail.Rate)%</td>
+                            <td>@detail.MonthlyPayment.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
+                            <td>@detail.AmountLeft.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
+                            <td>@detail.PercentagePaid.ToString("P")</td>
                         </tr>
                     }
                 </tbody>
                 <tr>
                     <td colspan="3" class="bold-black">Total Amount Paid</td>
-                    <td colspan="2">@ViewBag.TotalAmount.ToString("C:2", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
+                    <td colspan="2">@ViewBag.TotalAmount.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
                 </tr>
             </table>
             @using (@Html.BeginForm("Details","Provider", FormMethod.Post))

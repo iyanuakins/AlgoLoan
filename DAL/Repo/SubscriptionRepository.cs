@@ -44,7 +44,7 @@ namespace DAL.Repo
             bool[] result = new[] {false, false};
             try
             {
-                var sub = _context.Subscriptions
+                var sub = _context.Subscriptions.AsNoTracking()
                     .FirstOrDefault(s => s.userId.Equals(id));
                 //Checking if user exist in subscription table
                 if (sub == null)
