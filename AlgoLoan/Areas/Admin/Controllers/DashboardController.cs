@@ -70,7 +70,7 @@ namespace AlgoLoan.Areas.Admin.Controllers
         {
             var searches = _searchRepository.GetAll();
             var allSearches = _mapper.Map<List<SearchViewModel>>(searches);
-            return View(allSearches);
+            return View(allSearches); 
         }
         
         public ActionResult ViewSubscriptions()

@@ -433,13 +433,13 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Providers.cshtml" />
+    <Content Include="Views\Provider\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Dashboard\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Views\Provider\" />
     <Folder Include="Views\Subscription\" />
   </ItemGroup>
   <ItemGroup>
