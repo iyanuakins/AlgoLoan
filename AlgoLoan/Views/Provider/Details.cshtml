@@ -4,55 +4,83 @@
     ViewBag.Title = "Loan repayment Details";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 top-pad2">
-
-            <dl class="dl-horizontal">
-                <dt class="bold-black"><strong>Company Name:</strong></dt>
-                <dd> @Model.name</dd>
-                <br />
-                <dt class="bold-black"><strong>Loan Duration:</strong></dt>
-                <dd>@ViewBag.Search.duration Months</dd>
-                <br />
-                <dt class="bold-black"><strong>Loan Amount:</strong></dt>
-                <dd>@(ViewBag.Search.amount.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG")))</dd>
-            </dl>
-
-            <br />
-            <table class="table table-striped">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Months</th>
-                        <th scope="col">Rate</th>
-                        <th scope="col">Payment</th>
-                        <th scope="col">Amount Left</th>
-                        <th scope="col">Percentage Paid</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var detail in ViewBag.RepaymentDetails)
-                    {
+<section class="min-vh-80 providers pt-5 pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="row bg-light p-2 ml-2 mb-2">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-building" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Company Name:</h6>
+                        <p>
+                            @Model.name
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="row bg-light p-2 ml-2 mb-2">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-hourglass-half" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Loan Duration:</h6>
+                        <p>
+                            @ViewBag.Search.duration Months
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="row bg-light p-2 ml-2 mb-2">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-money-bill-alt" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Loan Amount:</h6>
+                        <p>
+                            @(ViewBag.Search.amount.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG")))
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <table class="table table-striped text-white">
+                    <thead class="thead-light">
                         <tr>
-                            <th scope="row">@(ViewBag.Count++)</th>
-                            <td>@(detail.Rate)%</td>
-                            <td>@detail.MonthlyPayment.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
-                            <td>@detail.AmountLeft.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
-                            <td>@detail.PercentagePaid.ToString("P")</td>
+                            <th scope="col">Months</th>
+                            <th scope="col">Rate</th>
+                            <th scope="col">Payment</th>
+                            <th scope="col">Amount Left</th>
+                            <th scope="col">Percentage Paid</th>
                         </tr>
-                    }
-                </tbody>
-                <tr>
-                    <td colspan="3" class="bold-black">Total Amount Paid</td>
-                    <td colspan="2">@ViewBag.TotalAmount.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
-                </tr>
-            </table>
-            @using (@Html.BeginForm("Details","Provider", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken();
-                @Html.Hidden("providerId", @Model.Id);
-                <button type="submit" class="btn btn-success btn-block">Access loan</button>
-            }
+                    </thead>
+                    <tbody>
+                        @foreach (var detail in ViewBag.RepaymentDetails)
+                        {
+                            <tr>
+                                <th scope="row">@(ViewBag.Count++)</th>
+                                <td>@(detail.Rate)%</td>
+                                <td>@detail.MonthlyPayment.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
+                                <td>@detail.AmountLeft.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
+                                <td>@detail.PercentagePaid.ToString("P")</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tr>
+                        <td colspan="3" class="bold-black">Total Amount Paid</td>
+                        <td colspan="2">@ViewBag.TotalAmount.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG"))</td>
+                    </tr>
+                </table>
+                @using (@Html.BeginForm("Details", "Provider", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    ;
+                    @Html.Hidden("providerId", @Model.Id)
+                    ;
+                    <button type="submit" class="btn btn-success btn-block">Access loan</button>
+                }
+            </div>
         </div>
     </div>
-</div>
+</section>

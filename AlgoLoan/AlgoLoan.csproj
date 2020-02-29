@@ -225,6 +225,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructures\Statistics.cs" />
     <Compile Include="Migrations\202002242225080_InitialCreate.cs" />
     <Compile Include="Migrations\202002242225080_InitialCreate.Designer.cs">
       <DependentUpon>202002242225080_InitialCreate.cs</DependentUpon>
@@ -262,8 +263,6 @@
     <Content Include="Content\Images\sort_desc.png" />
     <Content Include="Content\Images\sort_desc_disabled.png" />
     <Content Include="Scripts\datatables.min.js" />
-    <Content Include="Content\flexslider.css" />
-    <Content Include="Content\fontawesome-all.css" />
     <Content Include="Content\Images\10.jpg" />
     <Content Include="Content\Images\11.jpg" />
     <Content Include="Content\Images\12.jpg" />
@@ -275,10 +274,6 @@
     <Content Include="Content\Images\9.jpg" />
     <Content Include="Content\Images\banner1.jpg" />
     <Content Include="Content\Images\contact.jpg" />
-    <Content Include="Content\owl.carousel.css" />
-    <Content Include="Content\owl.theme.css" />
-    <Content Include="Content\popuo-box.css" />
-    <Content Include="Content\prettyPhoto.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

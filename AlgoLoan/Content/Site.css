@@ -17,12 +17,110 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+/* input, */
+/* select, */
+/* textarea { */
+/*     max-width: 280px; */
+/* } */
 
 nav.navbar.navbar-expand-lg.navbar-light {
     padding: 1em 3em !important;
+}
+
+.home-text {
+    float: left;
+    width: 100%;
+    padding: 1em;
+}
+
+.banner-info h3 {
+    font-size: 5em;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+}
+
+.banner-info p {
+    letter-spacing: 2px;
+    line-height: 1.9em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+    font-size: 1.6em;
+    font-weight: 100;
+    margin: 1em 0;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
+
+.ban-form {
+    background: #fff;
+    padding: 3em;
+    float: right;
+    width: 100%;
+}
+
+    .ban-form input[type=submit] {
+        color: #FFFFFF;
+        padding: .8em 1em;
+        font-size: 1em;
+        cursor: pointer;
+        border: 2px solid #EB2941;
+        outline: none;
+        background: #EB2941;
+        width: 100%;
+        letter-spacing: 2px;
+        transition: 0.5s all;
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+        -ms-transition: 0.5s all;
+    }
+
+    .ban-form input[type="text"] {
+        width: 100%;
+        color: #555;
+        outline: none;
+        font-size: 1.5em;
+        padding: 0.9em 1em;
+        border: 1px solid #e6eae8;
+        -webkit-appearance: none;
+        margin-bottom: 1em;
+        letter-spacing: 1px;
+        background: #f3f4f5;
+    }
+
+    .ban-form select {
+        width: 100%;
+        color: #555;
+        outline: none;
+        font-size: 1.5em;
+        border: 1px solid #e6eae8;
+        -webkit-appearance: none;
+        margin-bottom: 1em;
+        letter-spacing: 1px;
+        background: #f3f4f5;
+    }
+
+    .ban-form button {
+        color: #FFFFFF;
+        padding: 1em 1.5em 2.5em 2em;
+        font-size: 1em;
+        cursor: pointer;
+        border: 2px solid #EB2941;
+        outline: none;
+        background: #EB2941;
+        width: 100%;
+        letter-spacing: 2px;
+        transition: 0.5s all;
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+        -ms-transition: 0.5s all;
+    }
+
+.min-vh-80 {
+    min-height: 80vh;
+}
+
+.text-bold {
+    font-weight: 700;
 }

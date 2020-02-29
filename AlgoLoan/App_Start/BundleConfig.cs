@@ -26,12 +26,6 @@ namespace AlgoLoan
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/datatables.min.css",
-                      "~/Content/fontawesome-all.css",
-                      "~/Content/prettyPhoto.css",
-                      "~/Content/owl.theme.css",
-                      "~/Content/owl.carousel.css",
-                      "~/Content/popuo-box.css",
-                      "~/Content/flexslider.css",
                       "~/Content/style.css",
                       "~/Content/site.css"));
         }

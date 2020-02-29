@@ -9,7 +9,7 @@ namespace AlgoLoan.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "Provider Name")]
         [StringLength(50)]
         public string name { get; set; }
         [Display(Name = "Minimum Rate")]
@@ -39,7 +39,7 @@ namespace AlgoLoan.Models
         [Required]
         public int maxDuration { get; set; }
 
-        [Display(Name = "Link")]
+        [Display(Name = "Website Link")]
         [Required]
         [StringLength(200)]
         public string link { get; set; }

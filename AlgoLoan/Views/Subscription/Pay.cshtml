@@ -5,14 +5,83 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 top-pad2">
-            <p class="bold-black text-center">Please subscribe or resubscribe to proceed to full loan details page.</p>
+            <div class="card text-white mb-5 mt-5 shadow-lg">
+                <div class="card-header"><h3 class="text-capitalize text-center text-info">Select Subscription package below</h3></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mt-2">
+                            <div class="card text-white border-info mb-3 shadow-lg" style="max-width: 20rem; min-height: 30rem;">
+                                <div class="card-header"><h3 class="text-capitalize text-center text-info">Kilo package</h3></div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-info">Benefits:</h5>
+                                    <ul class="list-group text-info text-bold">
+                                        <li class="list-group-item"><em>Amount:</em> &#8358 1000</li>
+                                        <li class="list-group-item"><em>1 month Subscription</em></li>
+                                        <li class="list-group-item"><em>Access to all features</em> User</li>
+                                        <li class="list-group-item"><em>24/7</em> Support</li>
+                                    </ul>
 
-            @using (Html.BeginForm("Pay", "Subscription", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken();
-                @Html.Hidden("type", "kilo");
-                <button type="submit" class="btn btn-success btn-block">Subscribe</button>
-            }
+                                </div>
+                                <div class="card-footer">
+                                    @using (Html.BeginForm("Pay", "Subscription", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("type", "kilo")
+                                        <button type="submit" class="btn btn-info btn-block">Subscribe</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <div class="card text-white bg-info mb-3 shadow-lg" style="max-width: 20rem; min-height: 30rem;">
+                                <div class="card-header"><h3 class="text-capitalize text-center">Mega package</h3></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Benefits:</h5>
+                                    <ul class="list-group text-light text-bold">
+                                        <li class="list-group-item bg-info"><em>Discount:</em> 10% <small class="text-danger badge-light p-1"><strike>&#8358 4000</strike></small></li>
+                                        <li class="list-group-item bg-info"><em>Amount:</em> &#8358 3600</li>
+                                        <li class="list-group-item bg-info"><em>4 months Subscription</em></li>
+                                        <li class="list-group-item bg-info"><em>Access to all features</em> User</li>
+                                        <li class="list-group-item bg-info"><em>24/7</em> Support</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer">
+                                    @using (Html.BeginForm("Pay", "Subscription", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("type", "mega")
+                                        <button type="submit" class="btn btn-light btn-block">Subscribe</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <div class="card text-white border-info mb-3 shadow-lg" style="max-width: 20rem; min-height: 30rem;">
+                                <div class="card-header"><h3 class="text-capitalize text-center text-info">Giga package</h3></div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-info">Benefits:</h5>
+                                    <ul class="list-group text-info text-bold">
+                                        <li class="list-group-item"><em>Discount:</em> 20% <small class="text-danger p-1"><strike>&#8358 12000</strike></small></li>
+                                        <li class="list-group-item"><em>Amount:</em> &#8358 9600</li>
+                                        <li class="list-group-item"><em>12 months Subscription</em></li>
+                                        <li class="list-group-item"><em>Access to all features</em> User</li>
+                                        <li class="list-group-item"><em>24/7</em> Support</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer">
+                                    @using (Html.BeginForm("Pay", "Subscription", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("type", "giga")
+                                        <button type="submit" class="btn btn-info btn-block">Subscribe</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

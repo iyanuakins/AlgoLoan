@@ -1,48 +1,168 @@
-﻿@model IEnumerable<AlgoLoan.Models.ProviderViewModel>
+﻿@using System.Globalization
+@model IEnumerable<AlgoLoan.Models.ProviderViewModel>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="min-vh-80 providers pt-5 pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <p class="text-bold">
+                    @Html.ActionLink("Add New Provider", "AddProvider")
+                </p>
+            </div>
+            <div class="col-md-3">
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Total searches:</h6>
+                        <p class="text-bold">
+                            @ViewBag.Statistics.Count
+                        </p>
+                    </div>
+                </div>
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Total Amount:</h6>
+                        <p class="text-bold">
+                            @(ViewBag.Statistics.Total.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG")))
+                        </p>
+                    </div>
+                </div>
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Maximum Amount:</h6>
+                        <p class="text-bold">
+                            @(ViewBag.Statistics.Max.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG")))
+                        </p>
+                    </div>
+                </div>
 
-<h2>Index</h2>
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Minimum Amount:</h6>
+                        <p class="text-bold">
+                            @(ViewBag.Statistics.Min.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG")))
+                        </p>
+                    </div>
+                </div>
 
-<p>
-    @Html.ActionLink("Add New Provider", "AddProvider");
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Unique Visits
-        </th>
-        <th>
-            Total Visits
-        </th>
-        <th>
-            Last Visit Date
-        </th>
-        <th></th>
-    </tr>
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Average Amount:</h6>
+                        <p class="text-bold">
+                            @(ViewBag.Statistics.Average.ToString("C", CultureInfo.CreateSpecificCulture("ng-NG")))
+                        </p>
+                    </div>
+                </div>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.uniqueClicks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.totalClicks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lastVisited)
-            </td>
-        </tr>
-    }
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Most searched duration:</h6>
+                        <p class="text-bold">
+                            @(Array.IndexOf(ViewBag.Statistics.DurationCounts, ViewBag.MaxDuration)) Months
+                        </p>
+                    </div>
+                </div>
 
-</table>
+
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Student Loan search:</h6>
+                        <p class="text-bold">
+                            @ViewBag.Statistics.TypesCount["studentloan"]
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Individual Loan search:</h6>
+                        <p class="text-bold">
+                            @ViewBag.Statistics.TypesCount["individualloan"]
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row bg-light p-1 ml-2 mb-1">
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-arrow-circle-right" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="col-md-9 text-left">
+                        <h6 class="ad-info text-uppercase mb-2">Business Loan search:</h6>
+                        <p class="text-bold">
+                            @ViewBag.Statistics.TypesCount["businessloan"]
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <table class="table table-striped text-white">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Unique Visits
+                            </th>
+                            <th>
+                                Total Visits
+                            </th>
+                            <th>
+                                Last Visit Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.uniqueClicks)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totalClicks)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.lastVisited)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</section>
+

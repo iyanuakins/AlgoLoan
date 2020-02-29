@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AlgoLoan.Infrastructures;
 using AlgoLoan.Models;
 using AutoMapper;
 using DAL.EF;
@@ -33,19 +34,21 @@ namespace AlgoLoan.Areas.Admin.Controllers
             var result = _providerRepository.GetAllProviders();
             var allProviders = _mapper.Map<List<ProviderViewModel>>(result);
             var searches = _searchRepository.GetAll();
-            int totalSearch = searches.Count;
-            decimal averageAmount = (searches.Sum(s => s.amount) / totalSearch);
-            decimal averageDuration = (searches.Sum(s => s.duration) / totalSearch);
+            var statistics = searches.Aggregate(new Statistics(), 
+                (acc, search) => acc.Accumulate(search), 
+                acc => acc.Compute());
+            ViewBag.Statistics = statistics;
+            ViewBag.MaxDuration = statistics.DurationCounts.Max();
             return View(allProviders);
         }
 
         public ActionResult AddProvider()
         {
-            ViewBag.Message = "";
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddProvider(ProviderViewModel model)
         {
             if (ModelState.IsValid)
@@ -58,10 +61,12 @@ namespace AlgoLoan.Areas.Admin.Controllers
                 _providerRepository.Add(provider);
                 if (_providerRepository.Save())
                 {
-                    ViewBag.Message = "Provider Successfully added";
+                    TempData["Message"] = $"{model.name} Successfully added loan provider list";
+                    TempData["MessageState"] = "text-success";
                     return RedirectToAction("AddProvider");
                 }
-                ViewBag.Message = "Something went wrong unable to add provider";
+                TempData["Message"] = "Something went wrong unable to add provider";
+                TempData["MessageState"] = "text-danger";
                 return View();
             }
             return View();

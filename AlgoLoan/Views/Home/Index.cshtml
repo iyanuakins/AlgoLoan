@@ -5,7 +5,7 @@
     ViewBag.Title = "Home Page";
 
     var durationOptions = new List<SelectListItem>
-    {
+{
         new SelectListItem {Text = "1 month", Value = "1"},
         new SelectListItem {Text = "2 months", Value = "2"},
         new SelectListItem {Text = "3 months", Value = "3"},
@@ -21,7 +21,7 @@
     };
 
     var typeOptions = new List<SelectListItem>
-    {
+{
         new SelectListItem {Text = "Student loan", Value = "studentloan"},
         new SelectListItem {Text = "Individual loan", Value = "individualloan"},
         new SelectListItem {Text = "Business loan", Value = "businessloan"}
@@ -29,38 +29,41 @@
 }
 
 <!-- banner-text -->
-<section class="testimonials bottom-banner-w3layouts">
+<section class="testimonials pt-5 pb-5 min-vh-80">
     <div class="container">
-        <div class="wrapper-slider text-left">
-            <!-- Slideshow 1 -->
-            <div class="rslides_container">
-                <ul class="rslides" id="slider1">
-                    <li>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="text-left">
+                    <div class="home-text">
                         <div class="banner-info">
                             <h3>Need a Loan?</h3>
                             <p>We can get you the absolute best from pool of loan providers. Fill the form Start the process.</p>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+
+                </div>
             </div>
-        </div>
-        <div class="ban-form text-left">
-            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new {@class= "mt-4"}))
-            {
-                @Html.AntiForgeryToken();
+            <div class="col-md-5">
+                <div class="ban-form shadow-lg">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "mt-4" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        ;
 
-                @Html.TextBoxFor(Model => Model.Amount, new { @class = "form-control", placeholder="Amount in Naira" })
+                        @Html.TextBoxFor(Model => Model.Amount, new { @class = "form-control", placeholder = "Amount in Naira" })
 
-                @Html.ValidationMessageFor(Model => Model.Amount, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(Model => Model.Amount, "", new { @class = "text-danger" })
 
-                @Html.DropDownListFor(Model => Model.Type, typeOptions, new { @class = "form-control" })
+                        @Html.DropDownListFor(Model => Model.Type, typeOptions, new { @class = "form-control" })
 
-                @Html.LabelFor(Model => Model.Duration, new { @class = "sr-only" })
+                        @Html.LabelFor(Model => Model.Duration, new { @class = "sr-only" })
 
-                @Html.DropDownListFor(Model => Model.Duration, durationOptions, new { @class = "form-control" })
+                        @Html.DropDownListFor(Model => Model.Duration, durationOptions, new { @class = "form-control" })
 
-                <button type="submit" class="form-control text-uppercase">Start Process</button>
-            }
+                        <button type="submit" class="form-control text-uppercase">Start Process</button>
+                    }
+                </div>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
