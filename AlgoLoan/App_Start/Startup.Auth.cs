@@ -47,16 +47,16 @@ namespace AlgoLoan
 
             /// Uncomment the following lines to enable logging in with third party login providers
             app.UseMicrosoftAccountAuthentication(
-                clientId: "73f58269-33a3-4688-a54d-5304d43ea6dd",
-                clientSecret: "a7::cgicBhJRi2e1yqEh2xgvP[G/NkH?");
+                clientId: "lkfekllkelrtyt",
+                clientSecret: "jhdvsjjkkjkjsewew");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-                appId: "2737013056415866",
-                appSecret: "f1678166a5afe314195e410addfdcfba");
+                appId: "jkdnkdskllks;l",
+                appSecret: "hgsjkjkscsds");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
